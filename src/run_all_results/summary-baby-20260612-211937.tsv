@@ -1,0 +1,15 @@
+model	status	exit_code	log
+BM3	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-baby-20260612-211937.log
+BPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BPR-baby-20260612-211937.log
+DAMRS	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\DAMRS-baby-20260612-211937.log
+DRAGON	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\DRAGON-baby-20260612-211937.log
+DualGNN	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\DualGNN-baby-20260612-211937.log
+FREEDOM	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-baby-20260612-211937.log
+GRCN	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\GRCN-baby-20260612-211937.log
+ItemKNNCBF	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-baby-20260612-211937.log
+LATTICE	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\LATTICE-baby-20260612-211937.log
+LayerGCN	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\LayerGCN-baby-20260612-211937.log
+LGMRec	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\LGMRec-baby-20260612-211937.log
+LightGCN	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\LightGCN-baby-20260612-211937.log
+MGCN	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MGCN-baby-20260612-211937.log
+MMGCN	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-baby-20260612-211937.log

@@ -1,0 +1,7 @@
+model	status	exit_code	log
+BM3	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-baby-cold-20260612-223921.log
+BPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BPR-baby-cold-20260612-223921.log
+FREEDOM	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-baby-cold-20260612-223921.log
+ItemKNNCBF	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-baby-cold-20260612-223921.log
+MMGCN	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-baby-cold-20260612-223921.log
+VBPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-baby-cold-20260612-223921.log

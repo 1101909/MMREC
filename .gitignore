@@ -4,6 +4,13 @@ __pycache__/
 *$py.class
 
 /data/baby/
+/.vs/
+/DATA_COLD/
+/DATA_SPLITS/
+/data/Trained-Models-Logs/
+/data/clothing/
+/data/elec/
+/data/sports/
 
 # C extensions
 *.so
