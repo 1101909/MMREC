@@ -1,0 +1,6 @@
+model	status	exit_code	log
+BM3	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-sports-cold-similar-20260618-150337.log
+FREEDOM	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-sports-cold-similar-20260618-150337.log
+ItemKNNCBF	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-sports-cold-similar-20260618-150337.log
+MMGCN	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-sports-cold-similar-20260618-150337.log
+VBPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-sports-cold-similar-20260618-150337.log

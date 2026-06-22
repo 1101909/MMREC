@@ -1,0 +1,6 @@
+model	status	exit_code	log
+BM3	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-baby-random-similar-20260618-232602.log
+FREEDOM	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-baby-random-similar-20260618-232602.log
+ItemKNNCBF	FAIL	3221225477	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-baby-random-similar-20260618-232602.log
+MMGCN	FAIL	3221225477	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-baby-random-similar-20260618-232602.log
+VBPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-baby-random-similar-20260618-232602.log

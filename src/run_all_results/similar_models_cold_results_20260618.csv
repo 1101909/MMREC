@@ -1,0 +1,21 @@
+dataset,model,status,recall@20,ndcg@20,precision@20,map@20,reason,log
+baby,BM3,PASS,0.0003,0.0001,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-baby-cold-similar-20260618-160557.log
+baby,FREEDOM,PASS,0.0003,0.0001,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-baby-cold-similar-20260618-160557.log
+baby,ItemKNNCBF,PASS,0.0089,0.0048,0.0005,0.0035,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-baby-cold-similar-20260618-160557.log
+baby,MMGCN,PASS,0.0000,0.0000,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-baby-cold-similar-20260618-160557.log
+baby,VBPR,PASS,0.0030,0.0012,0.0002,0.0007,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-baby-cold-similar-20260618-160557.log
+sports,BM3,PASS,0.0000,0.0000,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-sports-cold-similar-20260618-150337.log
+sports,FREEDOM,PASS,0.0009,0.0003,0.0001,0.0002,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-sports-cold-similar-20260618-150337.log
+sports,ItemKNNCBF,FAIL,,,,,RuntimeError: [enforce fail at alloc_cpu.cpp:80] data. DefaultCPUAllocator: not enough memory: you tried to allocate 2613889944 bytes.,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-sports-cold-similar-20260618-150337.log
+sports,MMGCN,PASS,0.0000,0.0000,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-sports-cold-similar-20260618-150337.log
+sports,VBPR,PASS,0.0017,0.0006,0.0001,0.0003,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-sports-cold-similar-20260618-150337.log
+clothing,BM3,PASS,0.0000,0.0000,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-clothing-cold-similar-20260618-151833.log
+clothing,FREEDOM,PASS,0.0018,0.0006,0.0001,0.0003,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-clothing-cold-similar-20260618-151833.log
+clothing,ItemKNNCBF,FAIL,,,,,RuntimeError: [enforce fail at alloc_cpu.cpp:80] data. DefaultCPUAllocator: not enough memory: you tried to allocate 2122076356 bytes.,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-clothing-cold-similar-20260618-151833.log
+clothing,MMGCN,PASS,0.0000,0.0000,0.0000,0.0000,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-clothing-cold-similar-20260618-151833.log
+clothing,VBPR,PASS,0.0012,0.0004,0.0001,0.0002,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-clothing-cold-similar-20260618-151833.log
+elec,BM3,FAIL,,,,,failed/no test result,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-elec-cold-similar-20260618-153720.log
+elec,FREEDOM,FAIL,,,,,RuntimeError: [enforce fail at alloc_cpu.cpp:80] data. DefaultCPUAllocator: not enough memory: you tried to allocate 15876504004 bytes.,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-elec-cold-similar-20260618-153720.log
+elec,ItemKNNCBF,FAIL,,,,,RuntimeError: [enforce fail at alloc_cpu.cpp:80] data. DefaultCPUAllocator: not enough memory: you tried to allocate 15876504004 bytes.,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-elec-cold-similar-20260618-153720.log
+elec,MMGCN,FAIL,,,,,failed/no test result,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-elec-cold-similar-20260618-153720.log
+elec,VBPR,PASS,0.0005,0.0002,0.0000,0.0001,,E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-elec-cold-similar-20260618-153720.log

@@ -1,0 +1,6 @@
+model	status	exit_code	log
+BM3	FAIL	3221225477	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\BM3-elec-cold-similar-20260618-153720.log
+FREEDOM	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\FREEDOM-elec-cold-similar-20260618-153720.log
+ItemKNNCBF	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\ItemKNNCBF-elec-cold-similar-20260618-153720.log
+MMGCN	FAIL	3221225477	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MMGCN-elec-cold-similar-20260618-153720.log
+VBPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-elec-cold-similar-20260618-153720.log

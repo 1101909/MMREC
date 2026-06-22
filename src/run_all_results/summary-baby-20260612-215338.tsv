@@ -1,0 +1,7 @@
+model	status	exit_code	log
+MVGAE	TIMEOUT	124	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\MVGAE-baby-20260612-215338.log
+PGL	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\PGL-baby-20260612-215338.log
+SELFCFED_LGN	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\SELFCFED_LGN-baby-20260612-215338.log
+SLMRec	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\SLMRec-baby-20260612-215338.log
+SMORE	FAIL	1	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\SMORE-baby-20260612-215338.log
+VBPR	PASS	0	E:\NCS\Recommendation in ecommerce\BAIBAO\Framework\MMREC\src\run_all_results\VBPR-baby-20260612-215338.log
