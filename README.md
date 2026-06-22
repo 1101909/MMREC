@@ -14,6 +14,36 @@ $\text{MMRec}$: A modern <ins>M</ins>ulti<ins>M</ins>odal <ins>Rec</ins>ommendat
 <img src="./images/MMRec.png" width="500">
 </p>
 
+## Run on Kaggle from GitHub
+
+Use this cell in a Kaggle notebook. Enable Internet for the notebook if the repo
+has not been added as a Kaggle dataset.
+
+```python
+!rm -rf /kaggle/working/MMREC
+!git clone https://github.com/1101909/MMREC.git /kaggle/working/MMREC
+%cd /kaggle/working/MMREC
+
+!python kaggle_run_all_selected_models.py \
+  --data-path /kaggle/input/datasets/toanktx/mmrec-cold \
+  --datasets baby sports clothing elec \
+  --models VBPR LightGCN MMGCN GRCN LATTICE FREEDOM BM3 SLMRec LGMRec MGCN SMORE \
+  --epochs 5
+```
+
+For a quick single-model test:
+
+```python
+!python kaggle_run_all_selected_models.py \
+  --data-path /kaggle/input/datasets/toanktx/mmrec-cold \
+  --dataset baby \
+  --models BM3 \
+  --epochs 1
+```
+
+The runner prepares writable data under `/kaggle/working/mmrec-cold-fixed` and
+writes logs plus summary CSV files under `src/kaggle_run_results`.
+
 ## Supported Models
 source code at: `src\models`
 

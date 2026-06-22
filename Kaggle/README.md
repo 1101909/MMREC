@@ -1,6 +1,39 @@
-﻿# Kaggle one-cell runners for MMRec
+# Kaggle runners for MMRec
 
-Each `.py` file in this folder is standalone. Copy the whole content of one file into a Kaggle notebook cell and run it.
+## Clone from GitHub and run
+
+Use this cell in a Kaggle notebook:
+
+```python
+!rm -rf /kaggle/working/MMREC
+!git clone https://github.com/1101909/MMREC.git /kaggle/working/MMREC
+%cd /kaggle/working/MMREC
+
+!python kaggle_run_all_selected_models.py \
+  --data-path /kaggle/input/datasets/toanktx/mmrec-cold \
+  --datasets baby sports clothing elec \
+  --models VBPR LightGCN MMGCN GRCN LATTICE FREEDOM BM3 SLMRec LGMRec MGCN SMORE \
+  --epochs 5
+```
+
+For a short smoke run:
+
+```python
+!python kaggle_run_all_selected_models.py \
+  --data-path /kaggle/input/datasets/toanktx/mmrec-cold \
+  --dataset baby \
+  --models BM3 \
+  --epochs 1
+```
+
+The runner reads source data from `/kaggle/input/datasets/toanktx/mmrec-cold`,
+prepares writable fixed data under `/kaggle/working/mmrec-cold-fixed`, and
+writes logs plus summary CSV files under `src/kaggle_run_results`.
+
+## One-cell model runners
+
+Each `.py` file in this folder is standalone. Copy the whole content of one file
+into a Kaggle notebook cell and run it.
 
 Default behavior per file:
 - runs exactly one model named by the file

@@ -26,7 +26,7 @@ MODELS = [
 ]
 
 DATASETS = ["baby", "sports", "clothing", "elec"]
-DEFAULT_REPO_URL = "https://github.com/enoche/MMRec.git"
+DEFAULT_REPO_URL = "https://github.com/1101909/MMREC.git"
 METRIC_FIELDS = [
     "Recall@5", "Recall@10", "Recall@20", "Recall@50",
     "NDCG@5", "NDCG@10", "NDCG@20", "NDCG@50",
