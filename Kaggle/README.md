@@ -30,6 +30,35 @@ The runner reads source data from `/kaggle/input/datasets/toanktx/mmrec-cold`,
 prepares writable fixed data under `/kaggle/working/mmrec-cold-fixed`, and
 writes logs plus summary CSV files under `src/kaggle_run_results`.
 
+## Push Kaggle logs back to GitHub
+
+Create a Kaggle Secret named `GITHUB_TOKEN`. The token needs write access to
+this repo. Then set the environment variable before running:
+
+```python
+from kaggle_secrets import UserSecretsClient
+import os
+os.environ["GITHUB_TOKEN"] = UserSecretsClient().get_secret("GITHUB_TOKEN")
+```
+
+Add `--push-results` to the runner command:
+
+```python
+!python kaggle_run_all_selected_models.py \
+  --data-path /kaggle/input/datasets/toanktx/mmrec-cold \
+  --dataset baby \
+  --models BM3 \
+  --epochs 1 \
+  --push-results \
+  --results-branch main
+```
+
+After the run, clone or pull the repo locally to inspect and edit the logs:
+
+```bash
+git pull origin main
+```
+
 ## One-cell model runners
 
 Each `.py` file in this folder is standalone. Copy the whole content of one file

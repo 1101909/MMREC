@@ -44,6 +44,29 @@ For a quick single-model test:
 The runner prepares writable data under `/kaggle/working/mmrec-cold-fixed` and
 writes logs plus summary CSV files under `src/kaggle_run_results`.
 
+To submit logs back to GitHub after a Kaggle run, add a Kaggle Secret named
+`GITHUB_TOKEN`. The token needs write access to this repo. Then run:
+
+```python
+from kaggle_secrets import UserSecretsClient
+import os
+os.environ["GITHUB_TOKEN"] = UserSecretsClient().get_secret("GITHUB_TOKEN")
+
+!python kaggle_run_all_selected_models.py \
+  --data-path /kaggle/input/datasets/toanktx/mmrec-cold \
+  --dataset baby \
+  --models BM3 \
+  --epochs 1 \
+  --push-results \
+  --results-branch main
+```
+
+After Kaggle finishes, pull the logs locally:
+
+```bash
+git pull origin main
+```
+
 ## Supported Models
 source code at: `src\models`
 

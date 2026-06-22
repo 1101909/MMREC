@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 import numpy as np
 
@@ -462,6 +463,85 @@ def clone_repo(repo_url: str, work_dir: Path) -> Path:
     raise FileNotFoundError(f"Cloned repo does not look like MMRec: {repo_dir}")
 
 
+def repo_root_from_src(src_dir: Path) -> Path:
+    return src_dir.parent if src_dir.name == "src" else src_dir
+
+
+def run_git(args: list[str], cwd: Path, env: dict[str, str] | None = None) -> subprocess.CompletedProcess:
+    proc = subprocess.run(
+        ["git", *args],
+        cwd=str(cwd),
+        env=env,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    if proc.returncode != 0:
+        tail = "\n".join(proc.stdout.splitlines()[-40:])
+        raise RuntimeError(tail)
+    return proc
+
+
+def github_push_url(repo_url: str, token: str) -> str:
+    if repo_url.startswith("https://github.com/"):
+        safe_token = quote(token, safe="")
+        return repo_url.replace("https://", f"https://x-access-token:{safe_token}@")
+    return repo_url
+
+
+def push_results_to_github(
+    src_dir: Path,
+    run_dir: Path,
+    repo_url: str,
+    branch: str,
+    commit_message: str,
+    git_user_name: str,
+    git_user_email: str,
+    timestamp: str,
+) -> None:
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not token:
+        print("WARNING: --push-results was set, but GITHUB_TOKEN/GH_TOKEN is missing.", flush=True)
+        print("Add a Kaggle Secret named GITHUB_TOKEN with repo write access.", flush=True)
+        return
+
+    repo_root = repo_root_from_src(src_dir)
+    if not (repo_root / ".git").exists():
+        print(f"WARNING: cannot push results because {repo_root} is not a git checkout.", flush=True)
+        return
+
+    result_files = sorted(
+        path for path in run_dir.iterdir()
+        if path.is_file() and path.suffix.lower() in {".csv", ".log", ".tsv", ".json"}
+    )
+    if not result_files:
+        print(f"No result files found under {run_dir}; skipping GitHub push.", flush=True)
+        return
+
+    try:
+        run_git(["config", "user.name", git_user_name], repo_root)
+        run_git(["config", "user.email", git_user_email], repo_root)
+        rel_files = [path.relative_to(repo_root).as_posix() for path in result_files]
+        for index in range(0, len(rel_files), 50):
+            run_git(["add", "-f", *rel_files[index:index + 50]], repo_root)
+
+        diff_proc = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=str(repo_root))
+        if diff_proc.returncode == 0:
+            print("No new result changes to commit.", flush=True)
+            return
+
+        message = commit_message.format(timestamp=timestamp, branch=branch)
+        run_git(["commit", "-m", message], repo_root)
+        push_url = github_push_url(repo_url, token)
+        run_git(["push", push_url, f"HEAD:refs/heads/{branch}"], repo_root)
+        print(f"Pushed Kaggle results to GitHub branch: {branch}", flush=True)
+    except Exception as exc:
+        print("WARNING: failed to push Kaggle results to GitHub.", flush=True)
+        message = str(exc)
+        message = message.replace(token, "***").replace(quote(token, safe=""), "***")
+        print(message, flush=True)
+
+
 def ensure_python_packages() -> None:
     required = {
         "yaml": "pyyaml",
@@ -690,6 +770,11 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=2048)
     parser.add_argument("--eval-batch-size", type=int, default=4096)
     parser.add_argument("--cpu", action="store_true")
+    parser.add_argument("--push-results", action="store_true")
+    parser.add_argument("--results-branch", default="main")
+    parser.add_argument("--commit-message", default="Add Kaggle run results {timestamp}")
+    parser.add_argument("--git-user-name", default="Kaggle Runner")
+    parser.add_argument("--git-user-email", default="kaggle-runner@example.com")
     args, _ = parser.parse_known_args()
 
     src_dir = find_src_dir()
@@ -798,6 +883,17 @@ def main() -> None:
 
     print_results_table(result_rows)
     print(f"\nSummary: {summary_path}")
+    if args.push_results:
+        push_results_to_github(
+            src_dir=src_dir,
+            run_dir=run_dir,
+            repo_url=args.repo_url,
+            branch=args.results_branch,
+            commit_message=args.commit_message,
+            git_user_name=args.git_user_name,
+            git_user_email=args.git_user_email,
+            timestamp=timestamp,
+        )
 
 
 if __name__ == "__main__":
