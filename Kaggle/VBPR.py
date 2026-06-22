@@ -341,6 +341,11 @@ def build_knn_normalized_graph_from_embeddings(context, topk, normalization='sym
                 "                learned_adj = compute_normalized_laplacian(learned_adj)\n",
             )
         text = text.replace(
+            "            self.item_adj = (1 - self.lambda_coeff) * learned_adj + self.lambda_coeff * original_adj",
+            "            self.item_adj = (1 - self.lambda_coeff) * learned_adj + self.lambda_coeff * original_adj\n"
+            "            self.item_adj = self.item_adj.coalesce().detach() if self.item_adj.is_sparse else self.item_adj.detach()",
+        )
+        text = text.replace(
             "        for i in range(self.n_layers):\n"
             "            h = torch.mm(self.item_adj, h)",
             "        for i in range(self.n_layers):\n"
