@@ -81,6 +81,22 @@ sp.dok_matrix.update = _dok_compat_update
 sp.dok_matrix._update = _dok_compat_update
 
 
+def normalize_config_value(value):
+    if isinstance(value, list):
+        return normalize_config_value(value[0]) if value else None
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return value
+        try:
+            if any(ch in text.lower() for ch in [".", "e"]):
+                return float(text)
+            return int(text)
+        except ValueError:
+            return value
+    return value
+
+
 def first_values_for_model(model):
     config_path = os.path.join(os.getcwd(), "configs", "model", f"{model}.yaml")
     with open(config_path, "r", encoding="utf-8") as fp:
@@ -89,8 +105,8 @@ def first_values_for_model(model):
     hyper_parameters = set(config.get("hyper_parameters") or [])
     overrides = {}
     for key, value in config.items():
-        if key in hyper_parameters and isinstance(value, list):
-            overrides[key] = value[0] if value else None
+        if key in hyper_parameters:
+            overrides[key] = normalize_config_value(value)
     return overrides
 
 
@@ -542,13 +558,15 @@ def push_results_to_github(
         print(message, flush=True)
 
 
-def ensure_python_packages() -> None:
+def ensure_python_packages(models: list[str]) -> None:
     required = {
         "yaml": "pyyaml",
         "lmdb": "lmdb",
         "PIL": "pillow",
         "torchvision": "torchvision",
     }
+    if any(model in {"MMGCN", "GRCN"} for model in models):
+        required["torch_geometric"] = "torch_geometric"
     missing = [pip_name for import_name, pip_name in required.items() if importlib.util.find_spec(import_name) is None]
     if missing:
         print(f"Installing missing packages: {missing}", flush=True)
@@ -781,7 +799,7 @@ def main() -> None:
     if src_dir is None:
         src_dir = clone_repo(args.repo_url, Path(args.work_dir))
     print(f"MMRec src: {src_dir}", flush=True)
-    ensure_python_packages()
+    ensure_python_packages(args.models)
     KaggleMMRecPatcher(src_dir).apply()
     run_dir = src_dir / "kaggle_run_results"
     run_dir.mkdir(parents=True, exist_ok=True)
